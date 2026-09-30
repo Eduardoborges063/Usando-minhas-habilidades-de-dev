@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reino do Acaso</title>
+
+  <!-- Fontes: Cinzel (títulos, estilo fantasia) + Poppins (interface) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Moldura arredondada que envolve toda a tela (como na referência) -->
+  <div class="frame">
+
+    <!-- ================= CABEÇALHO ================= -->
+    <header class="topbar">
+
+      <button class="btn-menu" id="btnMenu" aria-expanded="false" aria-controls="painelMenu">
+        Menu <span aria-hidden="true">=</span>
+      </button>
+
+      <a href="index.html" class="logo" aria-label="Reino do Acaso - início">
+        Reino do <em>Acaso</em>
+      </a>
+
+      <nav class="nav-principal" aria-label="Navegação principal">
+        <a href="#visao-geral">Visão geral</a>
+        <a href="#midia">Mídia</a>
+        <a href="#noticias">Notícias</a>
+      </nav>
+
+      <div class="topbar-direita">
+        <label class="seletor-idioma">
+          <span class="sr-only">Idioma</span>
+          <select name="idioma">
+            <option value="pt">PT</option>
+            <option value="en">EN</option>
+          </select>
+        </label>
+        <!-- Depois você pode trocar por uma rota Java: /jogo/comprar -->
+        <a href="#comprar" class="btn btn-rosa btn-pequeno">Comprar</a>
+      </div>
+    </header>
+
+    <!-- Painel do menu (abre ao clicar em "Menu") -->
+    <aside class="painel-menu" id="painelMenu" hidden>
+      <a href="#visao-geral">Visão geral</a>
+      <a href="#midia">Mídia</a>
+      <a href="#noticias">Notícias</a>
+      <a href="login.html">Entrar</a>
+      <a href="cadastro.html">Criar conta</a>
+    </aside>
+
+    <!-- ================= HERO ================= -->
+    <main>
+      <section class="hero" aria-labelledby="titulo-hero">
+
+        <!-- Camada de fundo: troque pela arte do SEU jogo em img/fundo.jpg -->
+        <div class="hero-fundo" aria-hidden="true"></div>
+
+        <!-- Personagem principal: coloque sua arte em img/personagem.png -->
+        <img class="hero-personagem" src="img/personagem.png" alt="Personagem principal do jogo"
+             onerror="this.style.display='none'">
+
+        <div class="hero-texto">
+          <p class="hero-sobretitulo">Entre no</p>
+
+          <h1 id="titulo-hero">
+            Mundo
+            <svg class="ornamento-titulo" viewBox="0 0 120 20" aria-hidden="true">
+              <path d="M2 11 C 30 6, 60 15, 100 9 C 108 8, 114 4, 112 2 C 110 0, 105 3, 107 6 C 109 9, 115 8, 117 5"
+                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            <br>do Acaso
+          </h1>
+
+          <div class="hero-acoes">
+            <a href="#comprar" class="btn btn-rosa">Comprar</a>
+            <a href="#trailer" class="btn btn-vidro">Ver trailer</a>
+          </div>
+
+          <!-- Divisória ornamental -->
+          <svg class="ornamento-base" viewBox="0 0 300 24" aria-hidden="true">
+            <path d="M2 14 C 40 8, 90 18, 135 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <rect x="141" y="6" width="12" height="12" transform="rotate(45 147 12)" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M159 12 C 205 18, 255 8, 292 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <!-- Selos de prêmios (troque pelos seus, ou remova) -->
+        <div class="premios">
+          <div class="selo"><span>2026</span><strong>Feira Acadêmica</strong><span>prêmio</span></div>
+          <div class="selo"><span>Melhor</span><strong>Projeto POO</strong><span>turma</span></div>
+        </div>
+      </section>
+
+      <!-- ================= SEÇÕES DO MENU ================= -->
+      <section class="secao" id="visao-geral">
+        <h2>Visão geral</h2>
+        <p>Descreva aqui a história, as regras e o objetivo do jogo.</p>
+      </section>
+
+      <section class="secao" id="midia">
+        <h2>Mídia</h2>
+        <p>Capturas de tela, artes e vídeo do jogo.</p>
+      </section>
+
+      <section class="secao" id="noticias">
+        <h2>Notícias</h2>
+        <p>Novidades e atualizações. Essa lista pode vir do Oracle via Java (servlet/API).</p>
+      </section>
+    </main>
+
+  </div>
+
+  <script>
+    // Abre/fecha o painel do menu
+    const btn = document.getElementById('btnMenu');
+    const painel = document.getElementById('painelMenu');
+
+    btn.addEventListener('click', () => {
+      const aberto = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!aberto));
+      painel.hidden = aberto;
+    });
+
+    // Fecha o painel ao escolher um link
+    painel.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        btn.setAttribute('aria-expanded', 'false');
+        painel.hidden = true;
+      }
+    });
+  </script>
+</body>
+</html>
