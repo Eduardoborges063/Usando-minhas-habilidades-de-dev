@@ -1,25 +1,36 @@
 package Modulos;
 
-public class Menu{
+import java.util.Scanner;
 
-    public void iniciar(Usuario usuario){
-        System.out.println("Bem vindo ao jogo");
-        System.out.println("1 - Cadastrar usuario");
-        System.out.println("2 - Logar usuario");
-        System.out.println("3 - Sair");
-    }
+import Modulos.Usuario.CadastroUsuario;
 
-    public void criaUsuario() {
-        System.out.println("Digite seu nome: ");
-        String nome = new java.util.Scanner(System.in).nextLine();
+public class Menu {
+    
+    public void menu() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Bem-vindo ao menu!");
+        System.out.println("Escolha uma opção:");
+        System.out.println("1. Criar usuário");
+        System.out.println("2. Logar em um usuário");
+        System.out.println("3. Sair");
         
-        System.out.println("Digite seu email: ");
-        String email = new java.util.Scanner(System.in).nextLine();
+        int opcao = scanner.nextInt();
+
+        switch (opcao) {
+            case 1:
+               String resultado = CadastroUsuario.cadastrar();
+                    System.out.println(resultado);
+                break;
+            case 2:
+                break;
+            case 3:
+                System.out.println("Saindo...");
+                break;
+            default:
+                System.out.println("Opção inválida.");
+                break;
+        }
         
-        System.out.println("Digite sua senha: ");
-        String senha = new java.util.Scanner(System.in).nextLine();
-
-        System.out.println("Usuario criado com sucesso");
+        scanner.close();
     }
-
 }
