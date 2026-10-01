@@ -22,6 +22,11 @@ public class Menu {
                     System.out.println(resultado);
                 break;
             case 2:
+                System.out.println("Digite o email do usuário:");
+                String email = scanner.next();
+                System.out.println("Digite a senha do usuário:");
+                String senha = scanner.next();
+                
                 break;
             case 3:
                 System.out.println("Saindo...");
